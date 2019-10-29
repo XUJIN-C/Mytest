@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 这里填写对应的Dao文件所在的路径 -->
+<mapper namespace="com.example.demo.pojo.skilldao">
+    <sql id="table">skill</sql>
+    <resultMap id="skill" type="com.example.demo.dao.skill">
+        <id column="id" jdbcType="int" property="id"/>
+        <result column="name" jdbcType="varchar" property="bm"/>
+<collection property=" ratings" ofType="rating">
+    <id column="t2.id" jdbcType="int" property="id"/>
+    <result column="t2.name" jdbcType="varchar" property="name"/>
+    <result column="t2.bgo" jdbcType="int" property="bgo"/>
+
+</collection>
+
+    </resultMap>
+
+
+    <select id="getskillByid" resultMap="skill">
+        select t1.id,t1.name ,t2.name,t2.bgo,t2.id
+        from t1 ,t2
+        where t1.id=t2.tid and  t1.id=#{id}
+
+    </select>
+</mapper>
