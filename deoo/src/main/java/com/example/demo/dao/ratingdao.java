@@ -8,13 +8,13 @@ import java.util.List;
 public interface ratingdao {
 
 
-    void delete (int id);
+    int delete (int id);
 
-    void  update(rating r);
+    int  update(rating r);
 
-    void  newp(rating r);
-
-    List<rating> getAll();
+    int  newp(rating r);
 
     rating getratingByid(int id);
+
+    List<rating> getAll();
 }

@@ -5,22 +5,43 @@
 <mapper namespace="com.example.demo.pojo.skilldao">
     <sql id="table">skill</sql>
     <resultMap id="skill" type="com.example.demo.dao.skill">
-        <id column="id" jdbcType="int" property="id"/>
-        <result column="name" jdbcType="varchar" property="bm"/>
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="bm"/>
 <collection property=" ratings" ofType="rating">
-    <id column="t2.id" jdbcType="int" property="id"/>
-    <result column="t2.name" jdbcType="varchar" property="name"/>
-    <result column="t2.bgo" jdbcType="int" property="bgo"/>
+    <id column="t2id" jdbcType="INTEGER" property="id"/>
+    <result column="t2n" jdbcType="VARCHAR" property="name"/>
+    <result column="t2b" jdbcType="INTEGER" property="bgo"/>
 
 </collection>
 
     </resultMap>
+<insert id="insert" parameterType="com.example.demo.pojo.skill">
+    insert  into  st1.t1(id,bm)
+    values  (#{id,jdbcType=INTEGER},#{name ,jdbcType=VARCHAR})
+</insert>
+
+    <delete id=" deleteByid" parameterType="com.example.demo.pojo.skill">
+        delete  from st1.t1
+        where  id=#{id,jdbcType=INTEGER}
+
+    </delete>
+
+    <update id=" update" parameterType="com.example.demo.pojo.skill">
+        update  st1.t1
+         set  bm=#{name,jdbcType=VARCHAR}
+        where  id=#{id,jdbcType=VARCHAR}
 
 
-    <select id="getskillByid" resultMap="skill">
-        select t1.id,t1.name ,t2.name,t2.bgo,t2.id
-        from t1 ,t2
+    </update>
+
+    <select id="selectByid" resultMap="skill" parameterType="com.example.demo.pojo.skill">
+        select t1.id,t1.bm ,t2.name t2n,t2.bgo t2b,t2.id t2id
+        from st1.t1 ,st1.t2
         where t1.id=t2.tid and  t1.id=#{id}
 
+    </select>
+    <select id="selectAll" resultMap="skill">
+select  st1.t1.id,st1.t1.bm
+from st1.t1
     </select>
 </mapper>

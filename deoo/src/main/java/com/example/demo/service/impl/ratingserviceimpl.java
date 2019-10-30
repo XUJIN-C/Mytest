@@ -1,36 +1,23 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dao.ratingdao;
 import com.example.demo.pojo.rating;
 import com.example.demo.service.ratingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-public class ratingserviceimpl {
-
+@Service
+public class ratingserviceimpl  implements ratingService {
     @Autowired
     com.example.demo.dao.ratingdao ratingdao;
-    public List<rating> getAll(){
-        return ratingdao.getAll();
+    @Override
+    public String insert(rating r) {
+          ratingdao.newp(r);
+        return "ok";
     }
 
-    public rating getPersonByID(int id){
-        return ratingdao.getratingByid(id);
-    }
-
-
-    public void delete(int id) {
-        ratingdao.delete(id);
-    }
-
-
-    public void update(rating r) {
-        ratingdao.update(r);
-    }
-
-
-    public void newp(rating r) {
-        ratingdao.newp(r);
+    @Override
+    public rating getrByid(int id) {
+      rating getrByid=ratingdao.getratingByid(id);
+        return getrByid;
     }
 }
