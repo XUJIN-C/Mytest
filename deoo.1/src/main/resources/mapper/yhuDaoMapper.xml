@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.yhudao">
+    <resultMap id="BUTMAP" type="com.example.demo.pojo.yhu">
+         <id column="id" property="id"/>
+          <result column="yeas" property="yeas"/>
+        <result column="name" property="name"/>
+        <collection  property="skills" ofType="com.example.demo.pojo.skills">
+
+            <result column="skills" property="skills"/>
+          <association property="skills_yhu" javaType="com.example.demo.pojo.skills_yhu">
+              <result column="rating" property="rating"/>
+              <association property="skill" javaType="com.example.demo.pojo.skill">
+
+                  <result column="skill" property="BM"/>
+              </association>
+          </association>
+
+        </collection>
+
+    </resultMap>
+
+
+    <select id="findAll"  resultMap="BUTMAP" >
+ SELECT
+	y.id,
+	y.yeas,
+	y.`name`,
+	s.skills,
+	ys.rating,
+	k.skill
+FROM
+	st1.emp_yhu y,
+	st1.`emp_yhu/skills.ratings` ys,
+	st1.emp_skills s,
+	st1.emp_skill K
+WHERE
+	y.id = ys.yhu_id
+	AND s.id = ys.skillss_id
+	AND K.id =s.s_id
+
+    </select>
+</mapper>
