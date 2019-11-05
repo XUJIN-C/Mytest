@@ -15,4 +15,6 @@ public class yhu {
 
     private List<skills> skills;
 
+    private  List<String> sidlist;
+
 }

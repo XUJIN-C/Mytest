@@ -9,13 +9,13 @@
         <collection  property="skills" ofType="com.example.demo.pojo.skills">
 
             <result column="skills" property="skills"/>
-          <association property="skills_yhu" javaType="com.example.demo.pojo.skills_yhu">
+<!--          <association property="skills_yhu" javaType="com.example.demo.pojo.skills_yhu">-->
               <result column="rating" property="rating"/>
-              <association property="skill" javaType="com.example.demo.pojo.skill">
+<!--              <association property="skill" javaType="com.example.demo.pojo.skill">-->
 
                   <result column="skill" property="BM"/>
-              </association>
-          </association>
+<!--              </association>-->
+<!--          </association>-->
 
         </collection>
 
@@ -41,4 +41,19 @@ WHERE
 	AND K.id =s.s_id
 
     </select>
+    <delete id="deleteByid" parameterType="java.lang.Integer">
+      delete st1.emp_yhu,st1.`emp_yhu/skills.ratings`
+      from  st1.emp_yhu
+          left  join st1.`emp_yhu/skills.ratings` on
+            st1.emp_yhu.id=st1.`emp_yhu/skills.ratings`.yhu_id  where st1.emp_yhu.id=#{id}
+
+
+    </delete>
+
+    <insert id="inseret" parameterType="com.example.demo.pojo.yhu">
+        insert  into st1.emp_yhu(id,yeas,name),
+                    st1.emp_yhu/skills.ratings(yhu_id,skill_id,rating),
+
+
+    </insert>
 </mapper>

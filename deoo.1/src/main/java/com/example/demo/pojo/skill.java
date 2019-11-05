@@ -6,7 +6,7 @@ import lombok.Data;
 public class skill {
 
 
-    private  String BM;
+
 
 
 }

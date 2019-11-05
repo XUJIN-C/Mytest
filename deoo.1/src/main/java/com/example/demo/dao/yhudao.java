@@ -7,4 +7,6 @@ import java.util.List;
 public interface yhudao {
 
     List<yhu> findAll();
+
+   int  deleteByid(int id);
 }

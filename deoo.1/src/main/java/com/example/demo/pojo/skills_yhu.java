@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class skills_yhu {
 
-    private  int rating;
+
 
     private  skill skill;
 }

@@ -8,4 +8,6 @@ public interface yhuservice {
 
 
     List<yhu> findALL();
+
+    public String deleByid(int id);
 }

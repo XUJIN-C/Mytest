@@ -10,8 +10,11 @@ public class skills {
     private  String skills;
 
 
+    private  int rating;
 
-    private  skills_yhu skills_yhu;
+    private  String BM;
+
+
 
 
 }

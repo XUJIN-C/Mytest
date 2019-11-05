@@ -13,8 +13,19 @@ public class yhuserviceimpl implements yhuservice {
    com.example.demo.dao.yhudao yhudao;
 
     @Override
+    public String deleByid(int id) {
+       int sta=yhudao.deleteByid(id);
+       if (sta!= 0){
+           return "ok";
+       }else {return "该信息不存在";}
+
+    }
+
+    @Override
     public List<yhu> findALL() {
 
         return yhudao.findAll();
+
+
     }
 }
